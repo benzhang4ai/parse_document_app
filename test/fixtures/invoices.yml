@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: MyString
+  date: 2023-11-28
+  seller: one
+  buyer: one
+  subtotal: 9.99
+  shipping: 9.99
+  other_fees: 9.99
+  total: 9.99
+  currency: MyString
+  terms: MyString
+
+two:
+  number: MyString
+  date: 2023-11-28
+  seller: two
+  buyer: two
+  subtotal: 9.99
+  shipping: 9.99
+  other_fees: 9.99
+  total: 9.99
+  currency: MyString
+  terms: MyString

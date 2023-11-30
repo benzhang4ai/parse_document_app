@@ -1,0 +1,34 @@
+.row
+  .col-8
+    %h1 Documents
+  .col-4.text-end.mt-2 
+    = form_for(Document.new, multipart: true) do |form|
+      .form-group
+        .input-group
+          .row
+            .col-8
+              = form.file_field :file, class: 'form-control'
+            .col-4
+              = form.submit 'Upload', class: 'btn btn-success'
+
+
+.table-responsive
+  %table.table.table-striped.table-bordered
+    %thead
+      %tr
+        %th File name
+        %th Document type
+        %th Uploaded on
+        %th
+        %th
+
+    %tbody
+      - @documents.each do |document|
+        %tr
+          %td= document.file_name
+          %td= document.document_type
+          %td= document.created_at
+          %td= link_to 'Show', document, class: 'btn btn-primary'
+          %td= link_to 'Destroy', document, data: { turbo_method: 'delete', turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger'
+
+

@@ -1,0 +1,59 @@
+.container
+  .row.mt-5
+    .col-md-3
+      %p
+        %b.key-column{ style: 'width: 50px;' } Document type:
+        = @document.document_type
+    .col-md-4
+      %p
+        %b.key-column{ style: 'width: 50px;' } Uploaded on:
+        = @document.created_at.to_date
+    .col-md-4
+      %p
+        %b.key-column{ style: 'width: 50px;' } File Name:
+        = @document.file.filename
+    .col-md-1.text-right
+      = link_to 'Parse', parse_document_path(@document), class: 'btn btn-primary'
+
+  .row.mt-4
+    .col-md-6
+      %h3 Preview
+      %iframe{src: @document.url, style: "width: 100%; height: 600px;"}
+    .col-md-6
+      %h3 Parsed Data
+      %table.table
+        - @document.data.except('document_type', 'uncertainties').each do |k, v|
+          %tr
+            %td.key-column= k.titlecase
+            %td
+              - if v.is_a?(Hash)
+                %table.table.table-bordered
+                  - v.each do |k2, v2|
+                    %tr
+                      %td.key-column= k2.titlecase
+                      %td
+                        - if v2.is_a?(Hash)
+                          %table.table.table-bordered
+                            - v2.each do |k3, v3|
+                              %tr
+                                %td.key-column= k3.titlecase
+                                %td= v3
+                        - else
+                          %table
+                            %tr
+                              %td= v2
+              - elsif v.is_a?(Array)
+                %table
+                  %td
+                    - v.each do |item|
+                      %table.table.table-bordered
+                        - item.each do |k4, v4|
+                          %tr
+                            %td.key-column= k4.titlecase
+                            %td= v4
+                      
+              - else
+                %table
+
+                  %tr
+                    %td= v

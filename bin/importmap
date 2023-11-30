@@ -2,3 +2,5 @@
 
 require_relative "../config/application"
 require "importmap/commands"
+
+pin "bootstrap", to: "bootstrap/dist/js/bootstrap.bundle.min.js"
