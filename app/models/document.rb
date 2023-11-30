@@ -76,7 +76,7 @@ Here is the pre-determined JSON format:
 Please only respond with a JSON object without backticks!!! When unsure, leave the field blank.
 
 PDF Raw Data:
-#{reader.pages.first.raw_content if ENV['USE_RAW_DATA']}
+#{reader.pages.first.raw_content if ENV['USE_RAW_DATA'] == 'true'}
 
 Text parsed from the PDF:
 #{reader.pages.first.text}
